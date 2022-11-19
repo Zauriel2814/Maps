@@ -44,12 +44,12 @@ async function loadData() {
 async function loadTracks() {
      // important: axios.get requires a URL
     // in this case we are using a relative URL
-    let tracksData = await axios.get("npark-tracks.geojson");
+    let response = await axios.get("npark-tracks.geojson");
 
     // display the content of the geojson file on the map
     // response.data holds the actual data from the geojson file
     // the second paramter of L.geoJson is a configuration object
-    const tracksLayer = L.geoJson(tracksData.data, {
+    const tracksLayer = L.geoJson(response.data, {
         // onEachFeature is a fixed function name from Leaflet
         // it is called for each feature in response.data
         onEachFeature: function(feature, layer) {
